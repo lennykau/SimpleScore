@@ -12,11 +12,8 @@ from tkinter        import ttk
 from shooterScore   import *
 from startMatch     import *
 from scoreConstants import *
-
-#
-# imports for local frames
-#
-from simpleConfig import *
+from simpleMatch    import *
+from simpleConfig   import *
 
 def exitAll():
     quit()
@@ -25,15 +22,6 @@ def exitAll():
 
 
 if __name__ == "__main__":
-
-    sConst   = ScoreConstants()
-    shooter1 = ShooterScore(1,2,3)
-    shooter1.setScoreConstants(sConst)
-    
-    shooter1.time = 60.55
-    miss = 2
-    
-    print(shooter1.totalScore)
     
     try:
         ini = configparser.ConfigParser()
@@ -41,6 +29,7 @@ if __name__ == "__main__":
     except:
         print("Unexpected error:", sys.exc_info()[0])
     
+    #match = SimpleMatch()
     root = Tk()
     root.title(ini['lables']['matchName'])
     

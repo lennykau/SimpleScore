@@ -9,14 +9,14 @@ class ShooterScore(object):
     # 
     def __init__(self,matchId, shooterId, stage, 
                  time=0, miss=0, noShoot=0, procedural=0):
-        __matchId    = matchId
-        __shooterId  = shooterId
-        __stage      = stage
-        __time       = time
-        __miss       = miss
-        __noShoot    = noShoot
-        __procedural = procedural
-        __totalScore = 0
+        self._matchId    = matchId
+        self._shooterId  = shooterId
+        self._stage      = stage
+        self._time       = time
+        self._miss       = miss
+        self._noShoot    = noShoot
+        self._procedural = procedural
+        self._totalScore = 0
  
     @property
     def matchId(self):
@@ -42,9 +42,9 @@ class ShooterScore(object):
     @property
     def totalScore(self):
         self._totalScore = (self._time + 
-                           (self._miss        * scoreConstants.miss) +
-                           (self._noShoot     * scoreConstants.noShoot) +
-                           (self._procedurals * scoreConstants.procedural))
+                           (self._miss        * ShooterScore.scoreConstants.miss) +
+                           (self._noShoot     * ShooterScore.scoreConstants.noShoot) +
+                           (self._procedural  * ShooterScore.scoreConstants.procedural))
         return self._totalScore
 
     @time.setter
@@ -54,12 +54,12 @@ class ShooterScore(object):
     def miss(self,miss):
         self._miss = miss
     @noShoot.setter
-    def noShoot(self,_noShoot):
-        self._noShoot
+    def noShoot(self,noShoot):
+        self._noShoot = noShoot
     @procedural.setter
     def procedural(self,procedural):
         self._procedural = procedural
     
     
     def setScoreConstants(self, constants):
-        scoreConstants = constants
+        ShooterScore.scoreConstants = constants

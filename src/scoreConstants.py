@@ -5,19 +5,19 @@
 
 class ScoreConstants(object):
     
-    def __init__(self):
-        __miss       = 20
-        __noShoot    = 40
-        __procedural = 60
+    def __init__(self, miss=20, noShoot=40, procedural=60):
+        self._miss       = miss
+        self._noShoot    = noShoot
+        self._procedural = procedural
         
     @property
     def miss(self):
-        return __miss
+        return self._miss
     
     @property
     def noShoot(self):
-        return __noShoot
+        return self._noShoot
     
     @property
     def procedural(self):
-        return __procedural
+        return self._procedural
