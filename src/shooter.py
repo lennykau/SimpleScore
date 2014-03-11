@@ -1,15 +1,16 @@
-# To change this license header, choose License Headers in Project Properties.
-# To change this template file, choose Tools | Templates
-# and open the template in the editor.
 
 __author__="lenny"
 __date__ ="$Mar 9, 2014 4:48:32 PM$"
 
+import logging
+
 class Shooter(object):
     
+    dbConn = 0
+    
     def __init__(self, name, id):
-        __name       = name
-        __shooter_id = id
+        self._name       = name
+        self._shooter_id = id
     
     @property
     def name(self):
@@ -18,3 +19,17 @@ class Shooter(object):
     @property
     def id(self):
         return self._shooter_id
+    
+    @name.setter
+    def name(self):
+        self._name = name
+        
+    def saveShooter(self):
+        sql = 'INSERT INTO SHOOTERS(NAME) VALUES("%s")' % self._name
+        logging.info('SQL :: %s' % sql)
+        try:
+           Shooter.dbConn.execute(sql)
+           Shooter.dbConn.commit()
+        except:
+            logging.error("insert failed")
+    

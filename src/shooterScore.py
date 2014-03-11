@@ -4,7 +4,8 @@
 
 class ShooterScore(object):
     
-    scoreConstants = 0        
+    scoreConstants = 0  
+    dbConn         = 0
         
     # 
     def __init__(self,matchId, shooterId, stage, 
@@ -60,6 +61,3 @@ class ShooterScore(object):
     def procedural(self,procedural):
         self._procedural = procedural
     
-    
-    def setScoreConstants(self, constants):
-        ShooterScore.scoreConstants = constants

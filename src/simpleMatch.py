@@ -7,5 +7,12 @@ import time
 class SimpleMatch(object):
     
     def __init__(self):
-        self._date = time.time()
+        self._date     = time.time()
         self._shooters = list()
+        self._scores   = list()
+        
+    def addShooter(self,shooterId):
+        self._shooters.append(shooterId)
+        
+    def delShooter(self,shooterId):
+        self._shooters.remove(shooterId)

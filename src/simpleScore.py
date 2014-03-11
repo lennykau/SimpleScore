@@ -7,6 +7,8 @@ __date__ ="$Mar 9, 2014 12:44:14 PM$"
 
 import sys
 import configparser
+import sqlite3
+
 from tkinter        import *
 from tkinter        import ttk
 from shooterScore   import *
@@ -14,6 +16,8 @@ from startMatch     import *
 from scoreConstants import *
 from simpleMatch    import *
 from simpleConfig   import *
+from shooter        import *
+
 
 def exitAll():
     quit()
@@ -28,10 +32,25 @@ if __name__ == "__main__":
         ini.read('simpleScore.ini')
     except:
         print("Unexpected error:", sys.exc_info()[0])
+        
+        
+    logFile  = ini['logging']['logfile']   
+    logLevel = ini['logging']['level']
+    numericLevel = getattr(logging, logLevel.upper(), None)
+    if not isinstance(numericLevel, int):
+        raise ValueError('Invalid log Level: %s' % loglevel)
+    
+    logging.basicConfig(filename=logFile,level=numericLevel)
+    logging.info('Simple Score starting')
+        
+    dbCon = sqlite3.connect('test.db')
+    Shooter.dbConn      = dbCon
+    ShooterScore.dbConn = dbCon
+    ShooterScore.scoreConstants = 0
     
     #match = SimpleMatch()
     root = Tk()
-    root.title(ini['lables']['matchName'])
+    root.title(ini['labels']['matchName'])
     
     mainframe = ttk.Frame(root, padding="3 3 12 12")
     mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
