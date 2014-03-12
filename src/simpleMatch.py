@@ -3,16 +3,33 @@
 # and open the template in the editor.
 
 import time
+import logging
 
 class SimpleMatch(object):
-    
+        
     def __init__(self):
-        self._date     = time.time()
-        self._shooters = list()
-        self._scores   = list()
+        logging.info('SimpleMatch constructor')
+        self._matchDate    = time.time()
+        self._matchEntries = list()
         
-    def addShooter(self,shooterId):
-        self._shooters.append(shooterId)
+    def addMatchEntry(self,matchEntry):
+        self._matchEntries.append(matchEntry)
         
-    def delShooter(self,shooterId):
-        self._shooters.remove(shooterId)
+    def delMatchEntry(self,matchEntryId):
+        self._matchEntries.remove(matchEntryId)
+        
+    @property 
+    def matchEntries(self):
+        return self._matchEntries
+    
+    @property
+    def scores(self):
+        return self._scores
+    
+    @property
+    def matchDate(self):
+        return self._matchDate
+    
+    @matchDate.setter
+    def matchDate(self,date):
+        self._matchDate = date

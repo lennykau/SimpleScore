@@ -5,9 +5,7 @@ __date__ ="$Mar 9, 2014 4:48:32 PM$"
 import logging
 
 class Shooter(object):
-    
-    dbConn = 0
-    
+        
     def __init__(self, name, id):
         self._name       = name
         self._shooter_id = id
@@ -24,7 +22,7 @@ class Shooter(object):
     def name(self):
         self._name = name
         
-    def saveShooter(self):
+    def writeToDB(self):
         sql = 'INSERT INTO SHOOTERS(NAME) VALUES("%s")' % self._name
         logging.info('SQL :: %s' % sql)
         try:

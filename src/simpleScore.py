@@ -44,6 +44,7 @@ if __name__ == "__main__":
     logging.info('Simple Score starting')
         
     dbCon = sqlite3.connect('test.db')
+    
     Shooter.dbConn      = dbCon
     ShooterScore.dbConn = dbCon
     ShooterScore.scoreConstants = 0
@@ -60,8 +61,11 @@ if __name__ == "__main__":
     tabs = ttk.Notebook(mainframe)
     startFrame  = ttk.Frame(tabs, padding="3 3 12 12"); # first page, which would get widgets gridded into it
     configFrame = ttk.Frame(tabs); # Sets variables for running match
-    tabs.add(startFrame,  text='Start Here')
-    tabs.add(configFrame, text='Configure')
+    tabs.add(startFrame,   text='Start Here')
+    tabs.add(configFrame,  text='Configure')
+    tabs.add(signInFrame,  text='Sign In')
+    tabs.add(matchFrame,   text='Match')
+    tabs.add(resulesFrame, text='Results')
     tabs.grid(column=1, row=1, sticky=(N,W))
     
     setupSimpleConfig(ini, configFrame)
