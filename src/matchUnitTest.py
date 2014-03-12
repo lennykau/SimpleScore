@@ -10,6 +10,7 @@ from simpleMatch  import *
 from shooterScore import *
 from matchEntry   import *
 from dataBase     import *
+from shooter      import *
 
 
 class  MatchUnitTestCase(unittest.TestCase):
@@ -34,8 +35,10 @@ class  MatchUnitTestCase(unittest.TestCase):
         try:
 #            self._dbConn        = sqlite3.connect('test.db')
             DataBase.dbConn     = sqlite3.connect('test.db')
-#            SimpleMatch.dbConn  = self._dbConn
+            DataBase.cursor     = DataBase.dbConn.cursor()
             
+            Shooter.createTable()
+            SimpleMatch.createTable()
             ShooterScore.createTable()
             
         except:

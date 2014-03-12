@@ -4,6 +4,8 @@ __date__ ="$Mar 9, 2014 4:48:32 PM$"
 
 import logging
 
+from dataBase import *
+
 class Shooter(object):
         
     def __init__(self, name, id):
@@ -21,6 +23,15 @@ class Shooter(object):
     @name.setter
     def name(self):
         self._name = name
+        
+    def createTable():
+        DataBase.dbConn.execute("""
+               CREATE TABLE IF NOT EXISTS shooter(
+	               shooterId  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                       name       VARCHAR(80)
+                    )
+               """)
+
         
     def writeToDB(self):
         sql = 'INSERT INTO SHOOTERS(NAME) VALUES("%s")' % self._name

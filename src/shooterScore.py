@@ -114,5 +114,6 @@ class ShooterScore(object):
         logging.info(sql)
         DataBase.dbConn.execute(sql)
         DataBase.dbConn.commit()
+        self._scoreId = DataBase.cursor.lastrowid
     
         

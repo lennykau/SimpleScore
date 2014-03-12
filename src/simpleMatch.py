@@ -5,6 +5,8 @@
 import time
 import logging
 
+from dataBase import *
+
 class SimpleMatch(object):
         
     def __init__(self):
@@ -33,3 +35,11 @@ class SimpleMatch(object):
     @matchDate.setter
     def matchDate(self,date):
         self._matchDate = date
+
+    def createTable():
+        DataBase.dbConn.execute("""
+            CREATE TABLE IF NOT EXISTS matches(
+	        matchId    INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                matchDate  INTEGER NOT NULL      
+                    )
+               """)

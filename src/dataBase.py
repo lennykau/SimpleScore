@@ -8,6 +8,7 @@ __date__ ="$Mar 11, 2014 5:25:35 PM$"
 class DataBase(object):
     
     dbConn = None
+    cursor = None
     
     def __init__(self):
         pass
